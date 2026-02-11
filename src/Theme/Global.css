@@ -1,0 +1,14 @@
+@import url(Variable.css);
+@import url(Normalize.css);
+
+
+*{
+  box-sizing: border-box;
+}
+
+
+  body{
+  box-sizing: border-box;
+  font-family: 'Inter', 'Times New Roman', sans-serif;
+}
+
