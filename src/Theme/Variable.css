@@ -1,9 +1,13 @@
-:root{  
-    --green:#00BEAF;
-    
-    --default-padding-left: 60px;
-    --default-padding-right:60px;
+:root {
+  --green: #00beaf;
 
+  --default-padding-left: 60px;
+  --default-padding-right: 60px;
 
-    --page-width:1903px;
+  /*Media Queries*/
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+
+  --page-width: 1903px;
 }
