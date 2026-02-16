@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Navbar from "../../Components/Navbar/Navbar"
+import Footer from "../../Components/Footer/Footer";
+
 function Signup() {
   const {
     register,
@@ -50,6 +53,8 @@ function Signup() {
 
   return (
     <div>
+
+      <Navbar  />
       <h2>Signup</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -83,6 +88,7 @@ function Signup() {
           </NavLink>
         </p>
       </form>
+      <Footer/>
 
       {serverMessage && <p>{serverMessage}</p>}
     </div>
