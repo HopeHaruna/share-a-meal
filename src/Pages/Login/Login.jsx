@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ProcuderCard from "../../Components/ProcuderCard/ProcuderCard"
 import ImpactCard from "../../Components/ImpactCard/ImpactCard"
 
 import styles from "./Login.module.css";
@@ -58,11 +57,6 @@ function Login() {
 
   return (
     <div className={styles.login}>
-      <ProcuderCard
-      title="Sponsors"
-      icon={<Openeye/>}
-      description="Fund meals for vulnerable individuals"
-      />
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <h2>
           Welcome <span className={styles.back}>back !</span>

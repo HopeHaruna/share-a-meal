@@ -82,9 +82,9 @@ function Signup() {
           {...register("role", { required: "Role is required" })}
         >
           <option value="">Choose your role</option>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-          <option value="vendor">Vendor</option>
+          <option value="user">SMEs</option>
+          <option value="admin">NGOs</option>
+          <option value="vendor">Sponsors</option>
         </select>
 
         <div className={styles.passwordWrapper}>
