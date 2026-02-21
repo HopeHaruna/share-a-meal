@@ -1,0 +1,37 @@
+{
+  "dashboard": [
+    {
+      "id": 1,
+      "restaurantName": "EAT-RITE RESTAURANT",
+      "location": "Yaba, Lagos",
+      "stats": {
+        "active": 8,
+        "pickedUp": 1,
+        "donations": 248
+      },
+      "insights": {
+        "nearbyNGOs": 3,
+        "peakTime": "3:00 Pm-6:00 Pm",
+        "mealsSaved": 248
+      },
+      "listings": [
+        {
+          "id": 1,
+          "title": "30 Packs of Jollof Rice",
+          "statusText": "Pickup in 1 hour",
+          "preparedTime": "12:00 Pm",
+          "location": "Yaba, Lagos",
+          "badgeText": "Pick up soon"
+        },
+        {
+          "id": 2,
+          "title": "20 portions of vegetable soup",
+          "statusText": "Expires in 6 hours",
+          "preparedTime": "1:00 Pm",
+          "location": "Yaba, Lagos",
+          "badgeText": "About To Expire"
+        }
+      ]
+    }
+  ]
+}
