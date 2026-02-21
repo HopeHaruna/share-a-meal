@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./Signup.module.css";
-
 import Openeye from "../../assets/Icons/eye-open.svg?react";
 import Closedeye from "../../assets/Icons/eye-closed.svg?react";
 
@@ -12,20 +11,28 @@ function Signup() {
   const {
     register,
     handleSubmit,
+    watch, // ✅ ADDED
     formState: { errors },
   } = useForm();
+
   const [serverMessage, setServerMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // ✅ ADDED
+
+  const navigate = useNavigate();
+
+  const password = watch("password"); // ✅ ADDED
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
   };
 
-  const navigate = useNavigate();
-
   const onSubmit = async (data) => {
+    setLoading(true);
+    setServerMessage("");
+
     try {
       const response = await fetch("api for the signup", {
         method: "POST",
@@ -35,20 +42,23 @@ function Signup() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => null);
 
-      if (response.ok) {
-        setServerMessage("Signup successful!");
-        setIsSuccess(true);
-      } else {
-        setServerMessage(result.message);
+      if (!response.ok) {
+        setServerMessage(result?.message || "Signup failed");
+        setLoading(false);
+        return;
       }
+
+      setServerMessage("Signup successful!");
+      setIsSuccess(true);
     } catch (error) {
       setServerMessage("Something went wrong.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  //This will take the user to the login page if the data he/she has provided has been approvided
   useEffect(() => {
     if (isSuccess) {
       const timer = setTimeout(() => {
@@ -65,29 +75,38 @@ function Signup() {
         <h2>
           Create your <span className={styles.shade}>account</span>
         </h2>
-        <input
-          placeholder="Full Name"
-          {...register("name", { required: " Full Name is required" })}
-        />
-        {errors.name && <p>{errors.name.message}</p>}
 
-        <input
-          placeholder="Email Adress"
+        <div className={styles.inputGroup}>
+            <input
+          placeholder="Full Name"
+          {...register("name", { required: "Full Name is required" })}
+        />
+        {errors.name && <p className={styles.error}>{errors.name.message}</p>}
+
+        </div>
+        <div className={styles.inputGroup}>
+           <input
+          placeholder="Email Address"
           {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <p>{errors.email.message}</p>}
-
-        <select
+        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+  
+</div>
+<div className={styles.inputGroup}>
+  <select
           className={styles.options}
           {...register("role", { required: "Role is required" })}
         >
           <option value="">Choose your role</option>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-          <option value="vendor">Vendor</option>
+          <option value="user">SMEs</option>
+          <option value="admin">NGOs</option>
+          <option value="vendor">Sponsors</option>
         </select>
+        {errors.role && <p  className={styles.error}>{errors.role.message}</p>}
 
-        <div className={styles.passwordWrapper}>
+</div>
+<div className={styles.inputGroup}>
+    <div className={styles.passwordWrapper}>
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
@@ -97,45 +116,72 @@ function Signup() {
             {showPassword ? <Openeye /> : <Closedeye />}
           </span>
         </div>
-        {errors.password && <p>{errors.password.message}</p>}
-        <div className={styles.passwordWrapper}>
+        {errors.password && <p  className={styles.error}>{errors.password.message}</p>}
+
+</div>
+
+      <div className={styles.inputGroup}>
+         <div className={styles.passwordWrapper}>
           <input
             type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirm Password"
-            {...register("password", { required: "Password is required" })}
+            {...register("confirmPassword", {
+              required: "Please confirm your password",
+              validate: (value) =>
+                value === password || "Passwords do not match",
+            })}
           />
           <span onClick={() => setShowConfirmPassword((prev) => !prev)}>
             {showConfirmPassword ? <Openeye /> : <Closedeye />}
           </span>
         </div>
+        {errors.confirmPassword && <p  className={styles.error}>{errors.confirmPassword.message}</p>}
 
-        {errors.password && <p>{errors.password.message}</p>}
+      </div>
 
-        <button type="submit">Signup</button>
-        <div>
-          <div className={styles.termsWrapper}>
-            <label>
-              <input
-                type="checkbox"
-                {...register("terms", {
-                  required: "You must agree to the Terms and Services",
-                })}
-              />
-              I agree to the Terms and Services
-            </label>
-          </div>
+       
 
-          {errors.terms && <p>{errors.terms.message}</p>}
-          <p>
-            Already have an account?{" "}
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "active-link" : "link")}
-            >
-              <span className="login">Login</span>
-            </NavLink>
-          </p>
+        
+
+      
+
+      
+       
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing up..." : "Signup"}
+        </button>
+
+        <div  className={styles.inputGroup}>
+
+        <div className={styles.termsWrapper}>
+          <label className={styles.agree}>
+            <input 
+              type="checkbox"
+              {...register("terms", {
+                required: "You must agree to the Terms and Services",
+              })}
+            />
+            <span> I agree to the Terms and Services</span>
+           
+          </label>
         </div>
+        {errors.terms && <p  className={styles.error}>{errors.terms.message}</p>}
+
+        </div>
+
+
+        <p>
+          Already have an account?
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? "active-link" : "link"
+            }
+          >
+            <span className="login">Login</span>
+          </NavLink>
+        </p>
       </form>
 
       {serverMessage && <p>{serverMessage}</p>}

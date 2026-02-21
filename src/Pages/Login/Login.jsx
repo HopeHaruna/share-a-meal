@@ -13,9 +13,11 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const [serverMessage, setServerMessage] = useState("");
   const [token, setToken] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); 
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
@@ -23,7 +25,26 @@ function Login() {
 
   const navigate = useNavigate();
 
+  
+  useEffect(() => {
+  const savedToken = localStorage.getItem("token");
+  const savedRole = localStorage.getItem("role");
+
+  if (savedToken && savedRole) {
+    if (savedRole === "SMEs") {
+      navigate("/sme");
+    } else if (savedRole === "NGOs") {
+      navigate("/ngo");
+    } else if (savedRole === "Sponsors") {
+      navigate("/sponsor");
+    }
+  }
+}, [navigate]);
+
   const onSubmit = async (data) => {
+    setLoading(true); 
+    setServerMessage("");
+
     try {
       const response = await fetch("login api from the backend", {
         method: "POST",
@@ -33,20 +54,23 @@ function Login() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => null); 
 
-      if (response.ok) {
-        localStorage.setItem("token", result.token);
-        setToken(result.token);
-      } else {
-        setServerMessage(result.message);
+      if (!response.ok) {
+        setServerMessage(result?.message || "Login failed");
+        setLoading(false);
+        return;
       }
+
+      localStorage.setItem("token", result.token);
+      setToken(result.token);
     } catch (error) {
       setServerMessage("Something went wrong.");
+    } finally {
+      setLoading(false); 
     }
   };
 
-  // This is want will take the user to the login
   useEffect(() => {
     if (token) {
       navigate("/dashboard");
@@ -59,13 +83,17 @@ function Login() {
         <h2>
           Welcome <span className={styles.back}>back !</span>
         </h2>
-        <input
+
+        <div className={styles.inputGroup}>
+           <input
           placeholder="Email"
           {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
 
-        <div className={styles.passwordWrapper}>
+        </div>
+        <div className={styles.inputGroup}>
+     <div className={styles.passwordWrapper}>
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
@@ -75,22 +103,32 @@ function Login() {
             {showPassword ? <Openeye /> : <Closedeye />}
           </span>
         </div>
+          {errors.password && <p className={styles.error}>{errors.password.message}</p>}
+        </div>
+       
+
+      
 
         {errors.password && <p>{errors.password.message}</p>}
 
-        <button type="submit">Login</button>
+      
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
 
-        <div>
-          <label>
-            <input type="checkbox" />
-            Remember me
+        <div className={styles.CTA}>
+          <label className={styles.rememberMe}>
+            <input type="checkbox"/>
+            <span>Remember me</span>
           </label>
 
           <p>
             Don’t have an account?{" "}
             <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active-link" : "link")}
+              to="/signup"
+              className={({ isActive }) =>
+                isActive ? "active-link" : "link"
+              }
             >
               Signup
             </NavLink>

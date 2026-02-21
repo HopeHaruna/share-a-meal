@@ -1,0 +1,10 @@
+.primaryBtn {
+    width: 10rem;
+    height: 3rem;
+  background-color:var(--Orange);
+  color: var(--White);
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}

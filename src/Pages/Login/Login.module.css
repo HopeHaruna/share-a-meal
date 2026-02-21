@@ -100,6 +100,40 @@ input::placeholder {
   cursor: pointer;
 }
 
+.CTA{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rememberMe{
+  display: flex;
+  gap: 4px;
+}
+
+.inputGroup {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputGroup input,
+.inputGroup select {
+  width: 100%;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.error {
+  position: absolute;
+  left: 12px;
+  top: 90%;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 12px;
+  pointer-events: none;
+}
+
 @media (min-width: 768px) {
   .login {
     flex-direction: row;
