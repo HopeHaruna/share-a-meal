@@ -1,6 +1,129 @@
 .footer {
-  background: #1b5e20;
+  background-color: #ffffff;
+  padding: 80px 5% 40px;
+  border-top: 2px solid #C05621; 
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.brandSection {
+  flex: 1;
+  min-width: 250px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.logoImg {
+  height: 45px;
+}
+
+.brandName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2D3748; 
+}
+
+.tagline {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  background-color: #F7FAFC; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C05621; 
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  background-color: #C05621;
   color: white;
+  transform: translateY(-3px);
+}
+
+.linksGrid {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.column h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #2D3748; 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.column a {
+  display: block;
+  text-decoration: none;
+  color: #4A5568; 
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.column a:hover {
+  color: #C05621; 
+  padding-left: 5px; 
+}
+
+.bottomBar {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid #E2E8F0;
   text-align: center;
-  padding: 15px;
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+  .linksGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo, .socials {
+    justify-content: center;
+  }
+  
+  .linksGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }

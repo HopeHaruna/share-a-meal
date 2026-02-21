@@ -1,86 +1,94 @@
 .navbar {
+  width: 100%;
+  background-color: #fff;
+  /* padding: 1rem 5%; */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navContainer {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
-  background: #1b5e20;
-  padding: 15px 20px;
-  color: white;
-  position: relative;
-  z-index: 100;
 }
 
 .logoImg {
   height: 40px;
-  display: block;
 }
 
-.links {
+.desktopLinks {
   display: flex;
+  list-style: none;
   align-items: center;
+  gap: 2rem;
 }
 
-.links a {
-  margin-left: 20px;
-  color: white;
+.desktopLinks a {
   text-decoration: none;
+  color: #333;
   font-weight: 500;
 }
 
-.menuBtn {
+.activeLink {
+  color: #c05621 !important; 
+}
+
+.navBtn {
+  background-color: #c05621;
+  color: #fff !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  transition: opacity 0.3s;
+}
+
+/* --- Mobile Logic --- */
+.hamburger {
   display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: white;
+  font-size: 1.8rem;
   cursor: pointer;
+  color: #333;
 }
 
-.mobileLogoContainer {
-  display: none; 
+.mobileMenu {
+  display: none;
 }
 
-/* --- Mobile Styles (768px and below) --- */
 @media (max-width: 768px) {
-  .menuBtn {
-    display: block;
+  .desktopLinks {
+    display: none; 
   }
 
-  .links {
+  .hamburger {
+    display: block; 
+  }
+
+  .mobileMenu {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
-    width: 100%;
-    background: #1b5e20;
-    padding: 0 20px; 
-    box-sizing: border-box;
-    
-   
-    max-height: 0; 
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+    /* width: 100%; */
+    background: white;
+    padding: 2rem;
+    gap: 1.5rem;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transform: translateY(-150%);
+    transition: transform 0.4s ease-in-out;
   }
 
-  .links.active {
-    max-height: 500px;
-    opacity: 1;
-    padding: 20px;
+  .mobileMenu.show {
+    transform: translateY(0);
   }
 
-  .mobileLogoContainer {
-    display: block;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    width: 100%;
-  }
-
-  .links a {
-    margin: 12px 0;
-    margin-left: 0; 
-    width: 100%;
+  .mobileNavBtn {
+    background-color: #c05621;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
   }
 }
-
