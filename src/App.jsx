@@ -1,3 +1,4 @@
+
 import {Routes, Route} from "react-router-dom";
 
 import HomePage from "./Pages/HomePage/HomePage"
@@ -20,6 +21,7 @@ function NGO() {
 
 
 
+
 function App() {
   return (
       <Routes>
@@ -30,9 +32,7 @@ function App() {
         <Route path="/sme" element={<SME />} />
         <Route path="/ngo" element={<NGO />} />
     </Routes>
-    
   );
-  
 }
 
-export default App
+export default App;
