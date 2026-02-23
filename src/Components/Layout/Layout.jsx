@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useState } from "react";
 import styles from "./Layout.module.css";
+import NgoDash from "../NgoDash/NgoDash";
 
 function Layout() {
     const [open, setOpen] = useState(false);
@@ -16,6 +17,11 @@ function Layout() {
             <Outlet />
           </div>
           {/* <div><SmeDash/></div> */}
+          <div><NgoDash/></div>
+
+
+          
+
         </div>
         <Footer />
       </div>

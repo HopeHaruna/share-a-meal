@@ -22,14 +22,37 @@
           "preparedTime": "12:00 Pm",
           "location": "Yaba, Lagos",
           "badgeText": "Pick up soon"
-        },
+        }
+      ]
+    }
+  ],
+  "ngoDashboard": [
+    {
+      "id": 1,
+      "ngoName": "Hope Alive NGO",
+      "location": "Operating in Yaba & Surulere",
+      "stats": {
+        "available": 5,
+        "reserved": 2,
+        "totalSaved": 124
+      },
+      "urgent": [
         {
-          "id": 2,
-          "title": "20 portions of vegetable soup",
-          "statusText": "Expires in 6 hours",
-          "preparedTime": "1:00 Pm",
-          "location": "Yaba, Lagos",
-          "badgeText": "About To Expire"
+          "id": 101,
+          "title": "20 Portions of Vegetable Soup",
+          "restaurant": "Eat-Rite Restaurant",
+          "location": "Yaba, Lagos 1.2Km",
+          "prepared": "11:30 AM",
+          "expires": "Expires in 3 hours"
+        }
+      ],
+      "recommended": [
+        {
+          "id": 201,
+          "title": "50 Packs of Jollof Rice",
+          "restaurant": "Eat-Rite Restaurant",
+          "location": "Yaba, Lagos 1.2Km",
+          "prepared": "12:00 PM (2 hours ago)"
         }
       ]
     }
