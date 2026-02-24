@@ -18,7 +18,6 @@ import TransparencyIcon from "../../assets/Icons/Transparency.svg?react"
 export default function Home() {
   return (
     <main className={styles.container}>
-      <Navbar/>
       
       
       <section className={styles.hero}>
@@ -41,7 +40,7 @@ export default function Home() {
       </section>
 
       
-      <section className={styles.section}>
+      <section className={styles.section} id="how-it-works-ln">
         <h2 className={styles.subtitles}>How It Works</h2>
 
         <div className={styles.cards}>
@@ -63,7 +62,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.impact}>
+      <section className={styles.impact} id="impact">
         <h2 className={styles.subtitles}>Impact</h2>
 
         <div className={styles.stats}>
@@ -94,8 +93,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.subtitles}>About Us</h2>
+      <section className={styles.section} id="about-us">
+        <h2 className={styles.subtitles}> About Us</h2>
         <h3>Reducing <span className={styles.shade}>Food</span> Waste Through Community <span className={styles.shade}>Action</span>
 </h3>
         <p className={styles.description}>
@@ -138,7 +137,6 @@ export default function Home() {
           </section>
         </div>
       </section>
-      <Footer/>
     </main>
   );
 }

@@ -1,16 +1,16 @@
 import styles from "./Sponsor.module.css";
-
-// Header and Sidebar are imported components
+import Header from "../../Components/Header/Header"
+import Sidebar from "../../Components/SideBar/SideBar"
 // import Header from "../../components/Header/Header";
 // import Sidebar from "../../components/Sidebar/Sidebar";
 
 export default function Dashboard() {
   return (
     <div className={styles.layout}>
-      {/* <Sidebar /> */}
+      <Sidebar />
 
       <div className={styles.main}>
-        {/* <Header /> */}
+        <Header />
 
         <div className={styles.content}>
           {/* Welcome Section */}

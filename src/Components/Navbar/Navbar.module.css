@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  background-color: #fff;
+  background-color:var(--White);
   /* padding: 1rem 5%; */
   position: sticky;
   top: 0;
@@ -27,7 +27,7 @@
 
 .desktopLinks a {
   text-decoration: none;
-  color: #333;
+  color: var(--Black);
   font-weight: 500;
 }
 

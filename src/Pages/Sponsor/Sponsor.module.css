@@ -10,9 +10,10 @@
   flex-direction: column;
 }
 
-.content {
+.content{
   padding: 20px 40px;
   overflow-y: auto;
+  background-color: var(--Gray) !important;
 }
 
 /* Welcome */

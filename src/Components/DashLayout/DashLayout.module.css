@@ -1,0 +1,46 @@
+.layout {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+    background-color: #F8FAF8; 
+  }
+  
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; 
+    height: 100%;
+  }
+  
+.content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto; 
+    scrollbar-width: thin;
+    scrollbar-color: #1B5E20 #f1f1f1; 
+  }
+  
+ 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: inherit;
+    color: #1B5E20;
+    font-weight: 600;
+  }
+  
+ 
+  @media (max-width: 768px) {
+    .layout {
+      flex-direction: column; 
+    }
+  
+    .content {
+      padding: 15px;
+    }
+  }
