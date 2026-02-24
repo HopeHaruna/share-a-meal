@@ -34,6 +34,10 @@
     font-weight: 600;
   }
   
+  .fabars {
+    display: block !important;
+    background-color: #1B5E20;
+  }
  
   @media (max-width: 768px) {
     .layout {
@@ -42,5 +46,17 @@
   
     .content {
       padding: 15px;
+    }
+  }
+  /* .mobileToggleBar {
+    display: none; 
+    
+  }
+   */
+  @media (max-width: 480px) {
+    .mobileToggleBar {
+      display: flex; 
+     
+     
     }
   }

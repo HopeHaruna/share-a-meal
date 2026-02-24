@@ -15,7 +15,7 @@
 }
 
 .shade {
-  color: var(--Orange);
+  color: var(--Green);
 }
 
 .heroText p {
@@ -36,34 +36,34 @@
   margin-top: 1.5rem;
 }
 
-.orange__ball {
+.Green__ball {
   width: 8rem;
   height: 8rem;
   border-radius: 100%;
   position: absolute;
   bottom: 40px;
   right: -10px;
-  background-color: var(--Orange);
+  background-color: var(--Green);
 }
 
-.leftOrange__ball {
+.leftGreen__ball {
   width: 2rem;
   height: 2rem;
   border-radius: 100%;
   position: absolute;
   bottom: 30px;
   left: 10px;
-  background-color: var(--LightOrange);
+  background-color: var(--LightGreen);
 }
 
-.rightOrange__ball {
+.rightGreen__ball {
   width: 2rem;
   height: 2rem;
   border-radius: 100%;
   position: absolute;
   top: 90px;
   left: 100px;
-  background-color: var(--Orange);
+  background-color: var(--Green);
 }
 
 .section {
@@ -94,7 +94,7 @@
 }
 
 .impact {
-  background-color: var(--Orange);
+  background-color: var(--Green);
   color: var(--White);
   padding: 2rem 1rem;
   text-align: center;
@@ -135,7 +135,7 @@
   gap: 2rem;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background-color: var(--LightOrange);
+  background-color: var(--LightGreen);
   position: relative;
   top: 5px;
 }
@@ -164,7 +164,7 @@
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   gap: 1rem;
-  background-color: var(--Orange);
+  background-color: var(--Green);
 }
 
 .vision,
@@ -211,14 +211,14 @@
     margin-top: 1.5rem;
   }
 
-  .orange__ball {
+  .Green__ball {
     width: 10rem;
     height: 10rem;
     border-radius: 100%;
     position: absolute;
     top: 386px;
     right: 6px;
-    background-color: var(--Orange);
+    background-color: var(--Green);
   }
 
   .heroCTA {

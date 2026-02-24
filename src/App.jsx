@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
-// import SmeDash from "./Components/SmeDash/SmeDash";
 import NgoDash from "./Components/NgoDash/NgoDash";
 import HomePage from "./Pages/HomePage/HomePage";
 import Signup from "./Pages/Signup/Signup";
