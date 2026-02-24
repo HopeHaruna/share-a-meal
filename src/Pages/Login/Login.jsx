@@ -8,137 +8,123 @@ import Openeye from "../../assets/Icons/eye-open.svg?react";
 import Closedeye from "../../assets/Icons/eye-closed.svg?react";
 
 function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
-  const [serverMessage, setServerMessage] = useState("");
-  const [token, setToken] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false); 
+	const [serverMessage, setServerMessage] = useState("");
+	const [token, setToken] = useState(null);
+	const [showPassword, setShowPassword] = useState(false);
+	const [loading, setLoading] = useState(false);
 
-  const togglePassword = () => {
-    setShowPassword((prev) => !prev);
-  };
+	const togglePassword = () => {
+		setShowPassword((prev) => !prev);
+	};
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  
-  useEffect(() => {
-  const savedToken = localStorage.getItem("token");
-  const savedRole = localStorage.getItem("role");
+	useEffect(() => {
+		const savedToken = localStorage.getItem("token");
+		const savedRole = localStorage.getItem("role");
 
-  if (savedToken && savedRole) {
-    if (savedRole === "SMEs") {
-      navigate("/sme");
-    } else if (savedRole === "NGOs") {
-      navigate("/ngo");
-    } else if (savedRole === "Sponsors") {
-      navigate("/sponsor");
-    }
-  }
-}, [navigate]);
+		if (savedToken && savedRole) {
+			if (savedRole === "SMEs") {
+				navigate("/sme");
+			} else if (savedRole === "NGOs") {
+				navigate("/ngo");
+			} else if (savedRole === "Sponsors") {
+				navigate("/sponsor");
+			}
+		}
+	}, [navigate]);
 
-  const onSubmit = async (data) => {
-    setLoading(true); 
-    setServerMessage("");
+	const onSubmit = async (data) => {
+		setLoading(true);
+		setServerMessage("");
+		try {
+			// Use centralized API helper
+			const result = await import("../../api").then((m) =>
+				m.apiRequest("/auth/login", {
+					method: "POST",
+					body: JSON.stringify(data),
+				}),
+			);
+			localStorage.setItem("token", result.token);
+			setToken(result.token);
+		} catch (error) {
+			setServerMessage(error?.message || "Login failed");
+		} finally {
+			setLoading(false);
+		}
+	};
 
-    try {
-      const response = await fetch("login api from the backend", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+	useEffect(() => {
+		if (token) {
+			navigate("/dashboard");
+		}
+	}, [token, navigate]);
 
-      const result = await response.json().catch(() => null); 
+	return (
+		<div className={styles.login}>
+			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+				<h2>
+					Welcome <span className={styles.back}>back !</span>
+				</h2>
 
-      if (!response.ok) {
-        setServerMessage(result?.message || "Login failed");
-        setLoading(false);
-        return;
-      }
+				<div className={styles.inputGroup}>
+					<input
+						placeholder="Email"
+						{...register("email", { required: "Email is required" })}
+					/>
+					{errors.email && (
+						<p className={styles.error}>{errors.email.message}</p>
+					)}
+				</div>
+				<div className={styles.inputGroup}>
+					<div className={styles.passwordWrapper}>
+						<input
+							type={showPassword ? "text" : "password"}
+							placeholder="Password"
+							{...register("password", { required: "Password is required" })}
+						/>
+						<span onClick={togglePassword}>
+							{showPassword ? <Openeye /> : <Closedeye />}
+						</span>
+					</div>
+					{errors.password && (
+						<p className={styles.error}>{errors.password.message}</p>
+					)}
+				</div>
 
-      localStorage.setItem("token", result.token);
-      setToken(result.token);
-    } catch (error) {
-      setServerMessage("Something went wrong.");
-    } finally {
-      setLoading(false); 
-    }
-  };
+				{errors.password && <p>{errors.password.message}</p>}
 
-  useEffect(() => {
-    if (token) {
-      navigate("/dashboard");
-    }
-  }, [token, navigate]);
+				<button type="submit" disabled={loading}>
+					{loading ? "Logging in..." : "Login"}
+				</button>
 
-  return (
-    <div className={styles.login}>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <h2>
-          Welcome <span className={styles.back}>back !</span>
-        </h2>
+				<div className={styles.CTA}>
+					<label className={styles.rememberMe}>
+						<input type="checkbox" />
+						<span>Remember me</span>
+					</label>
 
-        <div className={styles.inputGroup}>
-           <input
-          placeholder="Email"
-          {...register("email", { required: "Email is required" })}
-        />
-        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+					<p>
+						Don’t have an account?{" "}
+						<NavLink
+							to="/signup"
+							className={({ isActive }) => (isActive ? "active-link" : "link")}
+						>
+							Signup
+						</NavLink>
+					</p>
+				</div>
+			</form>
 
-        </div>
-        <div className={styles.inputGroup}>
-     <div className={styles.passwordWrapper}>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            {...register("password", { required: "Password is required" })}
-          />
-          <span onClick={togglePassword}>
-            {showPassword ? <Openeye /> : <Closedeye />}
-          </span>
-        </div>
-          {errors.password && <p className={styles.error}>{errors.password.message}</p>}
-        </div>
-       
-
-      
-
-        {errors.password && <p>{errors.password.message}</p>}
-
-      
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-
-        <div className={styles.CTA}>
-          <label className={styles.rememberMe}>
-            <input type="checkbox"/>
-            <span>Remember me</span>
-          </label>
-
-          <p>
-            Don’t have an account?{" "}
-            <NavLink
-              to="/signup"
-              className={({ isActive }) =>
-                isActive ? "active-link" : "link"
-              }
-            >
-              Signup
-            </NavLink>
-          </p>
-        </div>
-      </form>
-
-      {serverMessage && <p>{serverMessage}</p>}
-    </div>
-  );
+			{serverMessage && <p>{serverMessage}</p>}
+		</div>
+	);
 }
 
 export default Login;
