@@ -3,7 +3,6 @@ const { AppError } = require("../middleware/errorHandler");
 
 const createSponsorship = async (req, res, next) => {
 	try {
-		
 		const sponsor_id = req.user.id;
 
 		const { meal_id, ngo_id, amount, note } = req.body;
@@ -81,7 +80,6 @@ const createSponsorship = async (req, res, next) => {
 
 const getMySponsorships = async (req, res, next) => {
 	try {
-		
 		const sponsor_id = req.user.id;
 
 		const [sponsorships] = await pool.query(
@@ -117,7 +115,6 @@ const getMySponsorships = async (req, res, next) => {
 
 const getMealSponsors = async (req, res, next) => {
 	try {
-		
 		const { mealId } = req.params;
 
 		if (!Number.isInteger(Number(mealId)) || mealId <= 0) {
@@ -175,7 +172,6 @@ const getMealSponsors = async (req, res, next) => {
 
 const getNGOSponsors = async (req, res, next) => {
 	try {
-		
 		const { ngoId } = req.params;
 
 		if (!Number.isInteger(Number(ngoId)) || ngoId <= 0) {
@@ -233,7 +229,6 @@ const getNGOSponsors = async (req, res, next) => {
 
 const getSponsorImpact = async (req, res, next) => {
 	try {
-		
 		const sponsorIdParam = req.params.sponsorId;
 		const sponsor_id = sponsorIdParam ? Number(sponsorIdParam) : req.user.id;
 

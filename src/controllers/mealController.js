@@ -247,12 +247,9 @@ const updateMeal = async (req, res, next) => {
 		const meal = meals[0];
 
 		if (meal.restaurant_id !== req.user.id) {
-			throw new AppError(
-				"You can only edit your own meals",
-				403,
-				"FORBIDDEN",
-				{ reason: "not_owner" },
-			);
+			throw new AppError("You can only edit your own meals", 403, "FORBIDDEN", {
+				reason: "not_owner",
+			});
 		}
 
 		const updateFields = [];
@@ -276,11 +273,7 @@ const updateMeal = async (req, res, next) => {
 		}
 
 		if (updateFields.length === 0) {
-			throw new AppError(
-				"No fields to update",
-				400,
-				"VALIDATION_ERROR",
-			);
+			throw new AppError("No fields to update", 400, "VALIDATION_ERROR");
 		}
 
 		updateValues.push(mealId);

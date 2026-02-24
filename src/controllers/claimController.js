@@ -9,20 +9,17 @@ const logMealStatusChange = async (
 	note,
 ) => {
 	try {
-
 		await pool.query(
 			"INSERT INTO meal_logs (meal_id, changed_by_id, from_status, to_status, note) VALUES (?, ?, ?, ?, ?)",
 			[mealId, actorId, fromStatus, toStatus, note],
 		);
 	} catch (error) {
 		console.error("Error logging meal status:", error);
-		
 	}
 };
 
 const claimMeal = async (req, res, next) => {
 	try {
-		
 		const { mealId } = req.params;
 
 		const ngo_id = req.user.id;
@@ -110,7 +107,6 @@ const claimMeal = async (req, res, next) => {
 
 const getMyClaims = async (req, res, next) => {
 	try {
-		
 		const ngo_id = req.user.id;
 
 		const [claims] = await pool.query(
@@ -136,7 +132,6 @@ const getMyClaims = async (req, res, next) => {
 
 const cancelClaim = async (req, res, next) => {
 	try {
-		
 		const { claimId } = req.params;
 
 		const ngo_id = req.user.id;
@@ -206,7 +201,6 @@ const cancelClaim = async (req, res, next) => {
 
 const markPickupReady = async (req, res, next) => {
 	try {
-		
 		const { mealId } = req.params;
 
 		const restaurant_id = req.user.id;
@@ -276,7 +270,6 @@ const markPickupReady = async (req, res, next) => {
 
 const confirmPickup = async (req, res, next) => {
 	try {
-		
 		const { claimId } = req.params;
 
 		const ngo_id = req.user.id;
@@ -329,7 +322,7 @@ const confirmPickup = async (req, res, next) => {
 
 		await pool.query(
 			"UPDATE claims SET status = ?, picked_up_at = NOW() WHERE id = ?",
-			["ACTIVE", claimId], 
+			["ACTIVE", claimId],
 		);
 
 		await pool.query("UPDATE meals SET status = ? WHERE id = ?", [
@@ -356,7 +349,6 @@ const confirmPickup = async (req, res, next) => {
 
 const confirmCompletion = async (req, res, next) => {
 	try {
-		
 		const { claimId } = req.params;
 
 		const { beneficiaries_count } = req.body;

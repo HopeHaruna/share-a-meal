@@ -3,7 +3,6 @@ const { AppError } = require("../middleware/errorHandler");
 
 const logMealStatusChange = async (mealId, fromStatus, toStatus, note) => {
 	try {
-
 		await pool.query(
 			"INSERT INTO meal_logs (meal_id, changed_by_id, from_status, to_status, note) VALUES (?, ?, ?, ?, ?)",
 			[mealId, null, fromStatus, toStatus, note],
@@ -15,7 +14,6 @@ const logMealStatusChange = async (mealId, fromStatus, toStatus, note) => {
 
 const getMealForAI = async (req, res, next) => {
 	try {
-		
 		const { mealId } = req.params;
 
 		const [meals] = await pool.query(
@@ -45,7 +43,6 @@ const getMealForAI = async (req, res, next) => {
 
 const getMealsForAI = async (req, res, next) => {
 	try {
-		
 		const { status } = req.query;
 
 		let query = `SELECT id, title, description, quantity, unit, prepared_at, expiry_at, status 
@@ -73,28 +70,22 @@ const getMealsForAI = async (req, res, next) => {
 
 const setMealExpiry = async (req, res, next) => {
 	try {
-		
 		const { mealId } = req.params;
 
 		const { expiry_at } = req.body;
 
 		if (!expiry_at) {
-			throw new AppError(
-				"expiry_at is required",
-				400,
-				"VALIDATION_ERROR",
-				{ field: "expiry_at" },
-			);
+			throw new AppError("expiry_at is required", 400, "VALIDATION_ERROR", {
+				field: "expiry_at",
+			});
 		}
 
 		const expiryDate = new Date(expiry_at);
 		if (isNaN(expiryDate.getTime())) {
-			throw new AppError(
-				"Invalid expiry_at format",
-				400,
-				"INVALID_FORMAT",
-				{ field: "expiry_at", expected: "ISO 8601 datetime" },
-			);
+			throw new AppError("Invalid expiry_at format", 400, "INVALID_FORMAT", {
+				field: "expiry_at",
+				expected: "ISO 8601 datetime",
+			});
 		}
 
 		const [meals] = await pool.query(
@@ -144,28 +135,22 @@ const setMealExpiry = async (req, res, next) => {
 
 const updateMealExpiry = async (req, res, next) => {
 	try {
-		
 		const { mealId } = req.params;
 
 		const { expiry_at } = req.body;
 
 		if (!expiry_at) {
-			throw new AppError(
-				"expiry_at is required",
-				400,
-				"VALIDATION_ERROR",
-				{ field: "expiry_at" },
-			);
+			throw new AppError("expiry_at is required", 400, "VALIDATION_ERROR", {
+				field: "expiry_at",
+			});
 		}
 
 		const expiryDate = new Date(expiry_at);
 		if (isNaN(expiryDate.getTime())) {
-			throw new AppError(
-				"Invalid expiry_at format",
-				400,
-				"INVALID_FORMAT",
-				{ field: "expiry_at", expected: "ISO 8601 datetime" },
-			);
+			throw new AppError("Invalid expiry_at format", 400, "INVALID_FORMAT", {
+				field: "expiry_at",
+				expected: "ISO 8601 datetime",
+			});
 		}
 
 		const [meals] = await pool.query(
@@ -212,25 +197,17 @@ const updateMealFoodStatus = async (req, res, next) => {
 		const { food_status } = req.body;
 
 		if (!food_status) {
-			throw new AppError(
-				"food_status is required",
-				400,
-				"VALIDATION_ERROR",
-				{ field: "food_status" },
-			);
+			throw new AppError("food_status is required", 400, "VALIDATION_ERROR", {
+				field: "food_status",
+			});
 		}
 
 		if (!["Fresh", "Moderate", "Spoiled"].includes(food_status)) {
-			throw new AppError(
-				"Invalid food_status",
-				400,
-				"INVALID_PARAM",
-				{
-					field: "food_status",
-					value: food_status,
-					allowed: ["Fresh", "Moderate", "Spoiled"],
-				},
-			);
+			throw new AppError("Invalid food_status", 400, "INVALID_PARAM", {
+				field: "food_status",
+				value: food_status,
+				allowed: ["Fresh", "Moderate", "Spoiled"],
+			});
 		}
 
 		const [meals] = await pool.query(

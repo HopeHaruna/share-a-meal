@@ -3,7 +3,6 @@ const { AppError } = require("../middleware/errorHandler");
 
 const getPendingUsers = async (req, res, next) => {
 	try {
-
 		const [users] = await pool.query(
 			"SELECT id, name, email, role, organization_name, address, phone, created_at FROM users WHERE is_verified = FALSE AND role != 'admin' ORDER BY created_at DESC",
 		);
@@ -14,14 +13,12 @@ const getPendingUsers = async (req, res, next) => {
 			users,
 		});
 	} catch (error) {
-		
 		next(error);
 	}
 };
 
 const getAllUsers = async (req, res, next) => {
 	try {
-
 		const [users] = await pool.query(
 			"SELECT id, name, email, role, organization_name, address, phone, is_verified, created_at FROM users ORDER BY is_verified ASC, created_at DESC",
 		);
@@ -32,14 +29,12 @@ const getAllUsers = async (req, res, next) => {
 			users,
 		});
 	} catch (error) {
-		
 		next(error);
 	}
 };
 
 const verifyUser = async (req, res, next) => {
 	try {
-		
 		const { userId } = req.params;
 
 		const [users] = await pool.query(
@@ -82,14 +77,12 @@ const verifyUser = async (req, res, next) => {
 			},
 		});
 	} catch (error) {
-		
 		next(error);
 	}
 };
 
 const revokeVerification = async (req, res, next) => {
 	try {
-		
 		const { userId } = req.params;
 
 		const [users] = await pool.query(
@@ -132,7 +125,6 @@ const revokeVerification = async (req, res, next) => {
 			},
 		});
 	} catch (error) {
-		
 		next(error);
 	}
 };

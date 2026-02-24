@@ -3,7 +3,6 @@ const { AppError } = require("../middleware/errorHandler");
 
 const getOverallMetrics = async (req, res, next) => {
 	try {
-		
 		const [mealsData] = await pool.query(
 			"SELECT COUNT(*) as total_meals FROM meals",
 		);
@@ -56,7 +55,6 @@ const getOverallMetrics = async (req, res, next) => {
 
 const getSMEMetrics = async (req, res, next) => {
 	try {
-		
 		const [metrics] = await pool.query(
 			`SELECT 
                 u.id,
@@ -86,7 +84,6 @@ const getSMEMetrics = async (req, res, next) => {
 
 const getNGOMetrics = async (req, res, next) => {
 	try {
-		
 		const [metrics] = await pool.query(
 			`SELECT 
                 u.id,
@@ -116,7 +113,6 @@ const getNGOMetrics = async (req, res, next) => {
 
 const getMealStatusBreakdown = async (req, res, next) => {
 	try {
-		
 		const [statuses] = await pool.query(
 			`SELECT status, COUNT(*) as count 
              FROM meals 
@@ -149,7 +145,6 @@ const getMealStatusBreakdown = async (req, res, next) => {
 
 const getActivityTimeline = async (req, res, next) => {
 	try {
-
 		const [timeline] = await pool.query(
 			`SELECT 
                 DATE(c.completed_at) as date,
@@ -175,7 +170,6 @@ const getActivityTimeline = async (req, res, next) => {
 
 const getAverageCompletionTime = async (req, res, next) => {
 	try {
-		
 		const [avgTime] = await pool.query(
 			`SELECT 
                 AVG(TIMESTAMPDIFF(HOUR, m.prepared_at, c.completed_at)) as avg_hours,
