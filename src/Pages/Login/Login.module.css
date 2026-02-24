@@ -15,7 +15,7 @@
 }
 
 .back {
-  color: var(--Orange);
+  color: var(--Green);
 }
 
 .form {
@@ -23,7 +23,7 @@
   max-width: 350px;
   background: var(--White);
   padding: 25px;
-  border: 2px solid var(--Orange);
+  border: 2px solid var(--Green);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -32,17 +32,17 @@
 
 .form input {
   padding: 10px;
-  border: 1px solid var(--Orange);
+  border: 1px solid var(--Green);
   border-radius: 4px;
   outline: none;
 }
 
 .form input:focus {
-  border: 2px solid var(--Orange);
+  border: 2px solid var(--Green);
 }
 
 .form button {
-  background-color: var(--Orange);
+  background-color: var(--Green);
   color: var(--White);
   padding: 10px;
   border: none;
@@ -63,7 +63,7 @@ input::placeholder {
 
 .passwordWrapper {
   padding: 10px;
-  border: 1px solid var(--Orange);
+  border: 1px solid var(--Green);
   border-radius: 4px;
   outline: none;
   display: flex;
@@ -71,7 +71,7 @@ input::placeholder {
 }
 
 .passwordWrapper:focus-within {
-  border: 2px solid var(--Orange);
+  border: 2px solid var(--Green);
 }
 
 .passwordWrapper input {
@@ -92,7 +92,7 @@ input::placeholder {
 
 .termsWrapper input {
   margin-right: 8px;
-  accent-color: var(--Orange);
+  accent-color: var(--Green);
   cursor: pointer;
 }
 
@@ -129,7 +129,7 @@ input::placeholder {
   left: 12px;
   top: 90%;
   transform: translateY(-50%);
-  color: red;
+  color: var(--Error);
   font-size: 12px;
   pointer-events: none;
 }

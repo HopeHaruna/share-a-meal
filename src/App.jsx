@@ -1,25 +1,23 @@
-
 import { Routes, Route,Navigate  } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
-// import SmeDash from "./Components/SmeDash/SmeDash";
 import NgoDash from "./Components/NgoDash/NgoDash";
 import HomePage from "./Pages/HomePage/HomePage"
 import Signup from "./Pages/Signup/Signup";
 import Login from "./Pages/Login/Login";
 import './Theme/Global.css'
-import SmeDash from "./Components/SmeDash/SmeDash";
+// import SmeDash from "./Components/SmeDash/SmeDash";
 import DashLayout from "./Components/DashLayout/DashLayout";
-
-
+// import DashLayout from "./Components/DashLayout/DashLayout"
 function App() {
   const user = { type: "ngo", name: "Hope Alive NGO" };
   return (
+    // <DashLayout/>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/sme" element={<SmeDash />} />
+        {/* <Route path="/sme" element={<SmeDash />} /> */}
         <Route path="/ngo" element={<NgoDash />} />
       </Route>
       <Route path="/dashboard" element={<DashLayout user={user}/>} />

@@ -4,7 +4,7 @@ import {
   FaTruck, FaComments, FaCog, 
   FaSignOutAlt, FaTimes 
 } from "react-icons/fa";
-import styles from "./Sidebar.module.css";
+import styles from "./SideBar.module.css";
 
 const Sidebar = ({ isMobileOpen, closeSidebar }) => {
   const navigate = useNavigate();
