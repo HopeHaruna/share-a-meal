@@ -1,40 +1,41 @@
-import { FaBell, FaSignOutAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 
-const Header = ({ user }) => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    navigate("/"); 
-  };
-
+export default function Header({ ngo }) {
   return (
-    <header className={styles.header}>
-      <div className={styles.rightSection}>
-        <div className={styles.iconWrapper}>
-          <FaBell className={styles.bellIcon} />
-          <span className={styles.notifBadge}></span>
+    <div className={styles.header}>
+      
+      {/* LEFT SIDE */}
+      <div className={styles.left}>
+        <h2 className={styles.greeting}>
+         
+        </h2>
+
+        <p className={styles.subtext}>
+          
+        </p>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className={styles.right}>
+        <div className={styles.notification}>
+          🔔
         </div>
 
-        <div className={styles.profileBadge}>
-          <img 
-            src={user?.avatar || ""} 
-            alt="Profile" 
-            className={styles.avatar} 
-          />
-          <div className={styles.userInfo}>
-            <span className={styles.userName}>{user?.name}</span>
-            <span className={styles.userRole}>
-              {user?.type?.toUpperCase()} Account
+        <div className={styles.profile}>
+          <div className={styles.avatar}>
+            {ngo?.name?.charAt(0) || "N"}
+          </div>
+
+          <div>
+            <p className={styles.profileName}>
+              {ngo?.name || "NGO Account"}
+            </p>
+            <span className={styles.accountType}>
+              NGO Account
             </span>
           </div>
         </div>
-
-       
       </div>
-    </header>
+    </div>
   );
-};
-
-export default Header;
+}
