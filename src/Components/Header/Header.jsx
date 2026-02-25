@@ -1,41 +1,29 @@
-import styles from "./Header.module.css";
 
-export default function Header({ ngo }) {
-  return (
-    <div className={styles.header}>
-      
-      {/* LEFT SIDE */}
-      <div className={styles.left}>
-        <h2 className={styles.greeting}>
-         
-        </h2>
+import React from 'react';
+import styles from './Header.module.css';
+import { MdNotificationsNone } from 'react-icons/md';
 
-        <p className={styles.subtext}>
-          
-        </p>
-      </div>
-
-      {/* RIGHT SIDE */}
-      <div className={styles.right}>
-        <div className={styles.notification}>
-          🔔
+export default function Header ({name, role, avator}){
+  return(
+    <header className={styles.header}>
+      <div className={styles.headerRight}>
+        <div className={styles.notificationWrapper}>
+          <MdNotificationsNone className={styles.headerIcon} />
+          <span className={styles.dot}></span>
         </div>
-
-        <div className={styles.profile}>
-          <div className={styles.avatar}>
-            {ngo?.name?.charAt(0) || "N"}
-          </div>
-
-          <div>
-            <p className={styles.profileName}>
-              {ngo?.name || "NGO Account"}
-            </p>
-            <span className={styles.accountType}>
-              NGO Account
-            </span>
+        <div className={styles.userProfile}>
+          <div className={styles.avatar}>{avator}</div>
+          <div className={styles.userInfo}>
+            <span className={styles.userName}>{name}</span>
+            <span className={styles.userRole}>{role}</span>
           </div>
         </div>
+
       </div>
-    </div>
-  );
+ </header>
+  )
 }
+
+
+
+

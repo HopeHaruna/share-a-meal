@@ -7,13 +7,15 @@ import ImpactCard from "../../Components/ImpactCard/ImpactCard"
 import Button from "../../Components/Button/Button"
 import Footer from "../../Components/Footer/Footer"
 
-import RestrauntIcon from "../../assets/Icons/restaurant.svg?react"
+import SMEsIcon from "../../assets/Icons/restaurant.svg?react"
 import SponsorIcon from "../../assets/Icons/money-dollar.svg?react"
 import PeopleIcon from "../../assets/Icons/people.svg?react"
 import CompassionIcon from "../../assets/Icons/Compassion.svg?react";
 import CommunityIcon from "../../assets/Icons/community.svg?react";
 import SustainabilityIcon from "../../assets/Icons/sustainability.svg?react"
 import TransparencyIcon from "../../assets/Icons/Transparency.svg?react"
+import MealIcon from "../../assets/Icons/Meal.svg?react"
+
 
 export default function Home() {
   return (
@@ -46,7 +48,7 @@ export default function Home() {
         <div className={styles.cards}>
            <ProcuderCard
                 title="SMEs"
-                icon={<RestrauntIcon />}
+                icon={<SMEsIcon/>}
                 description="Donate surplus food instead of throwing it"
                 />
            <ProcuderCard
@@ -67,18 +69,18 @@ export default function Home() {
 
         <div className={styles.stats}>
           <ImpactCard
-          icon={<RestrauntIcon/>}
+          icon={<MealIcon/>}
           title="12K"
           description="Meals Shared"
           />
            <ImpactCard
-           icon={<RestrauntIcon/>}
+           icon={<SMEsIcon/>}
            title="12K"
           description="SMEs Joined"
            
            />
             <ImpactCard 
-             icon={<RestrauntIcon/>}
+             icon={<SMEsIcon/>}
             title="12K"
           description="Sponers"
             

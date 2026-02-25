@@ -1,0 +1,79 @@
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.4;
+}
+
+.matchBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #f0fdf4; /* Very light green */
+  color: #166534; /* Dark green text */
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #bbf7d0;
+  white-space: nowrap;
+}
+
+.sparkleIcon {
+  font-size: 0.9rem;
+}
+
+.restaurantLabel {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.restaurantName {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.cardFooter {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.locationInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.pinIcon {
+  color: #1a5d2c;
+  font-size: 1rem;
+}

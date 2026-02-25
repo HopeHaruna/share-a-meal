@@ -1,17 +1,3 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 30px;
-  background: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-/* LEFT SIDE */
-.left {
-  display: flex;
-  flex-direction: column;
-}
 
 .greeting {
   margin: 0;
@@ -67,9 +53,7 @@
 }
 
 
-/* =========================
-   TABLET
-========================= */
+
 @media (max-width: 768px) {
   .header {
     padding: 20px;
@@ -92,9 +76,7 @@
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
+
 @media (max-width: 480px) {
   .header {
     flex-direction: column;
@@ -115,4 +97,15 @@
     width: 36px;
     height: 36px;
   }
+
+.userName {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a202c;
+}
+
+.userRole {
+  font-size: 0.8rem;
+  color: #718096;
+}
 }
