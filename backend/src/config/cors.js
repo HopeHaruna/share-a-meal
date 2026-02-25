@@ -6,14 +6,15 @@ const allowedOrigins = [
 	"https://your-production-frontend.com",
 ];
 
-module.exports = cors({
-	origin: function (origin, callback) {
-		if (!origin) return callback(null, true); // allow Postman / curl
-		if (allowedOrigins.includes(origin)) {
-			callback(null, origin); // return the origin string explicitly
-		} else {
-			callback(new Error("Not allowed by CORS"));
-		}
-	},
-	credentials: true,
-});
+module.exports = () =>
+	cors({
+		origin: function (origin, callback) {
+			if (!origin) return callback(null, true); // allow Postman / curl
+			if (allowedOrigins.includes(origin)) {
+				callback(null, origin); // return the origin string explicitly
+			} else {
+				callback(new Error("Not allowed by CORS"));
+			}
+		},
+		credentials: true,
+	});
