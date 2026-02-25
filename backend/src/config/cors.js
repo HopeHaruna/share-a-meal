@@ -7,6 +7,13 @@ const allowedOrigins = [
 ];
 
 module.exports = cors({
-	origin: allowedOrigins,
+	origin: function (origin, callback) {
+		if (!origin) return callback(null, true); // allow Postman / curl
+		if (allowedOrigins.includes(origin)) {
+			callback(null, origin); // return the origin string explicitly
+		} else {
+			callback(new Error("Not allowed by CORS"));
+		}
+	},
 	credentials: true,
 });
