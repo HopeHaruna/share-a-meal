@@ -70,3 +70,8 @@ backup.sql
 # PM2 process manager
 .pm2/
 ecosystem.config.js
+
+# Model files (do not commit pickle binaries)
+*.pkl
+food_status_model.pkl
+backend/ml/*.pkl
