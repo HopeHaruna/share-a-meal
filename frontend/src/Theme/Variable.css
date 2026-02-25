@@ -1,0 +1,18 @@
+:root {
+  --White:#FFFFFF;
+  --Black:#000000;
+  --Green: #1B5E20;
+  --Gray: #F5F5F5;
+  --LightGreen: #51c859;
+  --Error: #D32F2F;
+
+  --default-padding-left: 60px;
+  --default-padding-right: 60px;
+
+  /*Media Queries*/
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+
+  --page-width: 1903px;
+}

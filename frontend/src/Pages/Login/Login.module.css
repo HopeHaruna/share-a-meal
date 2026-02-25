@@ -1,0 +1,151 @@
+.login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--White);
+  padding: 20px;
+}
+
+.login h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.back {
+  color: var(--Green);
+}
+
+.form {
+  width: 100%;
+  max-width: 350px;
+  background: var(--White);
+  padding: 25px;
+  border: 2px solid var(--Green);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form input {
+  padding: 10px;
+  border: 1px solid var(--Green);
+  border-radius: 4px;
+  outline: none;
+}
+
+.form input:focus {
+  border: 2px solid var(--Green);
+}
+
+.form button {
+  background-color: var(--Green);
+  color: var(--White);
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.form p {
+  font-size: 14px;
+  text-align: center;
+}
+
+input::placeholder {
+  color: var(--Black);
+  opacity: 1;
+}
+
+.passwordWrapper {
+  padding: 10px;
+  border: 1px solid var(--Green);
+  border-radius: 4px;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.passwordWrapper:focus-within {
+  border: 2px solid var(--Green);
+}
+
+.passwordWrapper input {
+  width: 100%;
+  border: none;
+  padding: 0;
+}
+
+.passwordWrapper input:focus-within {
+  border: none;
+}
+
+.termsWrapper {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.termsWrapper input {
+  margin-right: 8px;
+  accent-color: var(--Green);
+  cursor: pointer;
+}
+
+.termsWrapper label {
+  cursor: pointer;
+}
+
+.CTA{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rememberMe{
+  display: flex;
+  gap: 4px;
+}
+
+.inputGroup {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputGroup input,
+.inputGroup select {
+  width: 100%;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.error {
+  position: absolute;
+  left: 12px;
+  top: 90%;
+  transform: translateY(-50%);
+  color: var(--Error);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .login {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .form {
+    max-width: 400px;
+    padding: 35px;
+  }
+
+  .login h2 {
+    font-size: 24px;
+  }
+}

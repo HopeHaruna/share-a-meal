@@ -1,0 +1,26 @@
+@import url(Variable.css);
+@import url(Normalize.css);
+
+
+*{
+  box-sizing: border-box;
+}
+
+
+  body{
+  box-sizing: border-box;
+  font-family: 'Inter', 'Times New Roman', sans-serif;
+}
+
+.link {
+  color: var(--Orange);
+  text-decoration: none; /* removes underline */
+}
+
+.active-link {
+  color: var(--Orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
