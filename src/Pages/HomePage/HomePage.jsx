@@ -1,14 +1,13 @@
  import '../../Theme/Global.css'
 import styles from "./HomePage.module.css";
 import heroImg from "../../assets/Images/food.png"; 
-import Navbar from "../../Components/Navbar/Navbar"
 import ProcuderCard from "../../Components/ProcuderCard/ProcuderCard"
 import ImpactCard from "../../Components/ImpactCard/ImpactCard"
 import Button from "../../Components/Button/Button"
-import Footer from "../../Components/Footer/Footer"
 
 import SMEsIcon from "../../assets/Icons/restaurant.svg?react"
 import SponsorIcon from "../../assets/Icons/money-dollar.svg?react"
+import SponsorIcon2 from "../../assets/Icons/sponsor.svg?react"
 import PeopleIcon from "../../assets/Icons/people.svg?react"
 import CompassionIcon from "../../assets/Icons/Compassion.svg?react";
 import CommunityIcon from "../../assets/Icons/community.svg?react";
@@ -20,8 +19,6 @@ import MealIcon from "../../assets/Icons/Meal.svg?react"
 export default function Home() {
   return (
     <main className={styles.container}>
-      
-      
       <section className={styles.hero}>
         <div className={styles.heroText}>
           <h1>Rescuing <span className={styles.shade}>Food</span> Waste Through Community <span className={styles.shade}>Action</span></h1>
@@ -48,17 +45,17 @@ export default function Home() {
         <div className={styles.cards}>
            <ProcuderCard
                 title="SMEs"
-                icon={<SMEsIcon/>}
+                icon={<SMEsIcon  className={styles.CardIcons}/>}
                 description="Donate surplus food instead of throwing it"
                 />
            <ProcuderCard
                 title="Sponsors"
-                icon={<SponsorIcon/>}
+                icon={<SponsorIcon className={styles.CardIcons}/>}
                 description="Fund meals for vulnerable individuals"
                 />
                  <ProcuderCard
                 title="Beneficiaries"
-                icon={<PeopleIcon/>}
+                icon={<PeopleIcon className={styles.CardIcons}/>}
                 description="Request and receive meals with Dignity"
                 />
         </div>
@@ -69,24 +66,24 @@ export default function Home() {
 
         <div className={styles.stats}>
           <ImpactCard
-          icon={<MealIcon/>}
+          icon={<MealIcon className={styles.mealIcon} />}
           title="12K"
           description="Meals Shared"
           />
            <ImpactCard
-           icon={<SMEsIcon/>}
+           icon={<SMEsIcon className={styles.CardIcons}/>}
            title="12K"
           description="SMEs Joined"
            
            />
             <ImpactCard 
-             icon={<SMEsIcon/>}
+             icon={<SponsorIcon2 className={styles.CardIcons}/>}
             title="12K"
           description="Sponers"
             
             />
             <ImpactCard 
-            icon={<CommunityIcon/>}
+            icon={<CommunityIcon className={styles.CardIcons}/>}
             
             title="12K"
           description="Communities Served"
@@ -107,19 +104,19 @@ export default function Home() {
         <div className={styles.ourProfile}>
           <section className={styles.values}>
             <div className={styles.item}>
-              <CompassionIcon className={styles.valuesIcons}/>
+              <CompassionIcon className={styles.CardIcons}/>
               <span className={styles.decor}>Compassion</span>
             </div>
             <div className={styles.item}>
-              <CommunityIcon/>
+              <CommunityIcon className={styles.CardIcons}/>
               <span className={styles.decor}>Community</span>
             </div>
             <div className={styles.item}>
-              <TransparencyIcon/>
+              <TransparencyIcon className={styles.CardIcons} />
               <span className={styles.decor}>Transparency</span>
             </div>
             <div className={styles.item}>
-              <SustainabilityIcon/>
+              <SustainabilityIcon className={styles.CardIcons}/>
               <span className={styles.decor}>Sustainabilty</span>
             </div>
           </section>
@@ -139,6 +136,7 @@ export default function Home() {
           </section>
         </div>
       </section>
+      
     </main>
   );
 }

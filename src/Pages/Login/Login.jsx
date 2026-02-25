@@ -98,7 +98,7 @@ function Login() {
 					)}
 				</div>
 
-				{errors.password && <p>{errors.password.message}</p>}
+				
 
 				<button type="submit" disabled={loading}>
 					{loading ? "Logging in..." : "Login"}
@@ -122,9 +122,11 @@ function Login() {
 				</div>
 			</form>
 
+
 			{serverMessage && <p>{serverMessage}</p>}
 		</div>
 	);
+
 }
 
 export default Login;

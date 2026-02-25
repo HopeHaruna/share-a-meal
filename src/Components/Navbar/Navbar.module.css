@@ -57,6 +57,13 @@
   display: none;
 }
 
+.navDivider {
+  border: none;
+  height: 2px;
+  background-color: var(--Green); 
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .desktopLinks {
     display: none; 

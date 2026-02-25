@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import styles from './SideBar.module.css';
 import { 
   MdDashboard, MdSearch, MdCalendarToday, MdLocalShipping, 
@@ -6,6 +7,18 @@ import {
 } from 'react-icons/md';
 
 export default function Sidebar(){
+    const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Optional: clear tokens or user data
+    localStorage.removeItem("token"); 
+    localStorage.removeItem("user");
+
+    // Redirect to login page
+    navigate("/login");
+  };
+
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
@@ -28,7 +41,9 @@ export default function Sidebar(){
       </nav>
 
       <div className={styles.sidebarFooter}>
-        <div className={styles.navItem}><MdLogout /> Logout</div>
+        <div className={styles.navItem} 
+        onClick={handleLogout}
+        style={{ cursor: "pointer" }}><MdLogout /> Logout</div>
         <div className={styles.navItem}><MdKeyboardArrowLeft /> Collapse</div>
       </div>
     </aside>

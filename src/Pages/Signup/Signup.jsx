@@ -8,6 +8,7 @@ import Openeye from "../../assets/Icons/eye-open.svg?react";
 import Closedeye from "../../assets/Icons/eye-closed.svg?react";
 
 function Signup() {
+
 	const {
 		register,
 		handleSubmit,
@@ -21,9 +22,12 @@ function Signup() {
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const [loading, setLoading] = useState(false); // ✅ ADDED
 
+  
 	const navigate = useNavigate();
 
+
 	const password = watch("password"); // ✅ ADDED
+
 
 	const togglePassword = () => {
 		setShowPassword((prev) => !prev);
@@ -134,7 +138,7 @@ function Signup() {
 					{loading ? "Signing up..." : "Signup"}
 				</button>
 
-				<div className={styles.inputGroup}>
+				{/* <div className={styles.inputGroup}>
 					<div className={styles.termsWrapper}>
 						<label className={styles.agree}>
 							<input
@@ -149,7 +153,7 @@ function Signup() {
 					{errors.terms && (
 						<p className={styles.error}>{errors.terms.message}</p>
 					)}
-				</div>
+				</div> */}
 
 				<p>
 					Already have an account?
@@ -162,9 +166,11 @@ function Signup() {
 				</p>
 			</form>
 
+
 			{serverMessage && <p>{serverMessage}</p>}
 		</div>
 	);
+
 }
 
 export default Signup;

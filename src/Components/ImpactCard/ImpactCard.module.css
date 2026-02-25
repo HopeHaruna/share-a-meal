@@ -36,6 +36,7 @@
   height:95px;
   border-radius: 100%;
   background-color: var(--Green);
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,10 +50,4 @@
   color: var(--Black);
 }
 
-.icon{
-  width: 12px;
-  height: 12px;
-  border: 2px solid black;
-
-}
 

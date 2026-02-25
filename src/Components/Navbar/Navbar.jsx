@@ -31,6 +31,8 @@ function Navbar() {
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
+       
+        <hr className={styles.navDivider} />
 
       {/* Mobile Dropdown Menu */}
       <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.show : ""}`}>
