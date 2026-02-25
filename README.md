@@ -1,4 +1,5 @@
-# Share-a-Meal Backend
+# share-a-meal
+Group 53 wtf capstone project
 
 Trust-first coordination engine for verified food sharing between SMEs, NGOs, sponsors, and admins.
 
