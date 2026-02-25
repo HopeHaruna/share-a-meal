@@ -150,27 +150,27 @@ curl https://<your-backend-url>/api/health
 
 ## 8. Monitoring & Maintenance
 
-- Enable Render logs and daily monitoring.  
-- Enable Aiven automated backups.  
+- Enable Render logs and daily monitoring.
+- Enable Aiven automated backups.
 - Optional: add Sentry for error tracking and UptimeRobot for uptime checks.
 
 ---
 
 ## 9. Production Checklist
 
-- [ ] Aiven MySQL created and migrations run  
-- [ ] Backend deployed on Render and health OK  
-- [ ] Frontend deployed on Render and loads  
-- [ ] `CORS_ORIGIN` updated  
-- [ ] Secrets stored in Render and GitHub (if using CI)  
+- [ ] Aiven MySQL created and migrations run
+- [ ] Backend deployed on Render and health OK
+- [ ] Frontend deployed on Render and loads
+- [ ] `CORS_ORIGIN` updated
+- [ ] Secrets stored in Render and GitHub (if using CI)
 - [ ] Monitoring/logging enabled
 
 ---
 
 If you want, I can now:
 
-1. Commit and push this updated file (I will).  
-2. Walk through Aiven creation with you step-by-step.  
+1. Commit and push this updated file (I will).
+2. Walk through Aiven creation with you step-by-step.
 3. After you provide Aiven connection details, initialize the DB and start Render deployments.
 
 Which should I do next?
