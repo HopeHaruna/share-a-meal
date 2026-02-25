@@ -34,12 +34,14 @@ shareAMeal/
 ### 1. Install Dependencies
 
 **Backend:**
+
 ```bash
 cd backend
 npm install
 ```
 
 **Frontend:**
+
 ```bash
 cd frontend
 npm install
@@ -48,6 +50,7 @@ npm install
 ### 2. Configure Environment
 
 **Backend (.env already exists):**
+
 ```
 PORT=3000
 DB_HOST=localhost
@@ -60,6 +63,7 @@ SERVICE_TOKEN=<your-token>
 ```
 
 **Frontend (.env already exists):**
+
 ```
 VITE_API_URL=http://localhost:3000
 ```
@@ -74,12 +78,14 @@ docker-compose up -d
 ### 4. Start Backend & Frontend
 
 **Terminal 1 - Backend:**
+
 ```bash
 cd backend
 npm run dev    # Runs on http://localhost:3000
 ```
 
 **Terminal 2 - Frontend:**
+
 ```bash
 cd frontend
 npm run dev    # Runs on http://localhost:5173
@@ -94,14 +100,17 @@ npm run dev    # Runs on http://localhost:5173
 ## 📚 API Endpoints
 
 ### Auth
+
 - `POST /auth/register` - Register new user
 - `POST /auth/login` - Login user
 
 ### Admin
+
 - `GET /admin/users/pending` - List pending users (Admin only)
 - `PATCH /admin/verify/:userId` - Verify user (Admin only)
 
 ### Meals (SME)
+
 - `POST /meals` - Create meal
 - `GET /meals` - Get all meals
 - `GET /meals/:mealId` - Get meal details
@@ -109,22 +118,26 @@ npm run dev    # Runs on http://localhost:5173
 - `DELETE /meals/:mealId` - Delete meal
 
 ### Claims (NGO)
+
 - `POST /claims/meal/:mealId` - Claim meal
 - `GET /claims/my` - Get my claims
 - `PATCH /claims/:claimId/pickup` - Confirm pickup
 - `PATCH /claims/:claimId/complete` - Complete claim
 
 ### Sponsorships
+
 - `POST /sponsorships` - Create sponsorship
 - `GET /sponsorships/my` - Get my sponsorships
 - `GET /sponsorships/impact` - Get impact metrics
 
 ### Metrics
+
 - `GET /metrics` - Overall metrics
 - `GET /metrics/status` - Status breakdown
 - `GET /metrics/timeline` - Timeline view
 
 ### AI (Service)
+
 - `GET /ai/meals` - Get meals for processing
 - `POST /ai/meal/:mealId/expiry` - Set meal expiry
 - `PATCH /ai/meal/:mealId/food-status` - Update food status
@@ -132,6 +145,7 @@ npm run dev    # Runs on http://localhost:5173
 ## 🧪 Testing
 
 **Backend:**
+
 ```bash
 cd backend
 npm test              # Run all tests
@@ -140,6 +154,7 @@ npm run test:coverage # Coverage report
 ```
 
 **Frontend:**
+
 ```bash
 cd frontend
 npm test              # Run tests
@@ -162,6 +177,7 @@ docker-compose down
 ## 📦 Build for Production
 
 **Backend:**
+
 ```bash
 cd backend
 npm run migrate  # Run migrations
@@ -169,6 +185,7 @@ npm start        # Start production server
 ```
 
 **Frontend:**
+
 ```bash
 cd frontend
 npm run build    # Build for production (creates dist/)
@@ -188,6 +205,7 @@ npm run preview  # Preview production build
 ## 📊 Tech Stack
 
 **Backend:**
+
 - Node.js 18+
 - Express 5.2
 - MySQL 8.0+
@@ -195,6 +213,7 @@ npm run preview  # Preview production build
 - Jest testing framework
 
 **Frontend:**
+
 - React 19
 - Vite build tool
 - React Router for navigation
@@ -206,6 +225,7 @@ npm run preview  # Preview production build
 ## 📖 Documentation
 
 See `/backend/docs/` for detailed guides:
+
 - `BACKEND_COMPLETION_SUMMARY.md` - What's been completed
 - `TEAM_COORDINATION_CHECKLIST.md` - Team tasks
 - `RENDER_DEPLOYMENT_GUIDE.md` - Deployment instructions
@@ -214,6 +234,7 @@ See `/backend/docs/` for detailed guides:
 ## 🚀 Deployment
 
 ### Option 1: Render (Recommended)
+
 1. Push to GitHub
 2. Connect Render to repo
 3. Set environment variables
@@ -222,6 +243,7 @@ See `/backend/docs/` for detailed guides:
 See `backend/docs/RENDER_DEPLOYMENT_GUIDE.md`
 
 ### Option 2: Railway
+
 1. Connect GitHub repo
 2. Use `railway.json` configuration
 3. Set secrets in Railway dashboard
@@ -229,6 +251,7 @@ See `backend/docs/RENDER_DEPLOYMENT_GUIDE.md`
 See `backend/railway.json`
 
 ### Option 3: Self-Hosted
+
 Deploy both backend and frontend on your own servers.
 
 ## 🤝 Contributing
