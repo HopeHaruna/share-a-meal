@@ -1,0 +1,91 @@
+name: Deploy Model to Production
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/ml/food_status_model.pkl"
+      - ".github/workflows/deploy-model.yml"
+
+jobs:
+  publish-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if model exists
+        id: model_check
+        run: |
+          if [ -f "backend/ml/food_status_model.pkl" ]; then
+            echo "model_exists=true" >> $GITHUB_OUTPUT
+            echo "model_sha=$(sha256sum backend/ml/food_status_model.pkl | awk '{print $1}')" >> $GITHUB_OUTPUT
+          else
+            echo "model_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create GitHub Release with model
+        if: steps.model_check.outputs.model_exists == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODEL_SHA: ${{ steps.model_check.outputs.model_sha }}
+        run: |
+          TAG="model-$(date +%Y%m%d-%H%M%S)"
+          gh release create "$TAG" \
+            --title "Model Release: $TAG" \
+            --notes "SHA256: $MODEL_SHA\n\nModel: food_status_model.pkl\nCommit: ${{ github.sha }}" \
+            backend/ml/food_status_model.pkl
+
+      - name: Get GitHub Release URL
+        if: steps.model_check.outputs.model_exists == 'true'
+        id: get_url
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
+          DOWNLOAD_URL="https://github.com/${{ github.repository }}/releases/download/${LATEST_TAG}/food_status_model.pkl"
+          echo "model_url=$DOWNLOAD_URL" >> $GITHUB_OUTPUT
+          echo "Model URL: $DOWNLOAD_URL"
+
+      - name: Update Render environment variable
+        if: steps.model_check.outputs.model_exists == 'true'
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          MODEL_URL: ${{ steps.get_url.outputs.model_url }}
+        run: |
+          if [ -z "$RENDER_API_KEY" ] || [ -z "$RENDER_SERVICE_ID" ]; then
+            echo "RENDER_API_KEY or RENDER_SERVICE_ID not set. Skipping Render update."
+            exit 0
+          fi
+
+          # Update environment variable via Render API
+          curl -X PATCH "https://api.render.com/v1/services/$RENDER_SERVICE_ID" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{\"envVars\": [{\"key\": \"MODEL_URL\", \"value\": \"$MODEL_URL\"}]}" \
+            --fail || echo "Warning: Failed to update Render env var (this is ok if service not ready)"
+
+      - name: Trigger Render deployment
+        if: steps.model_check.outputs.model_exists == 'true'
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+        run: |
+          if [ -z "$RENDER_API_KEY" ] || [ -z "$RENDER_SERVICE_ID" ]; then
+            echo "Render credentials not set. Skipping redeploy."
+            exit 0
+          fi
+
+          # Trigger manual deploy via Render API
+          curl -X POST "https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            --fail || echo "Warning: Failed to trigger redeploy (service may already be deploying)"
+
+      - name: Log completion
+        if: steps.model_check.outputs.model_exists == 'true'
+        run: |
+          echo "✅ Model published to GitHub Release"
+          echo "📍 URL: ${{ steps.get_url.outputs.model_url }}"
+          echo "🔍 SHA256: ${{ steps.model_check.outputs.model_sha }}"
