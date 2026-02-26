@@ -11,7 +11,6 @@
   flex-direction: column; 
   height: 100vh;
   position: relative;
-  /* border: 3px solid red; */
 }
 
 .contentArea {
@@ -70,7 +69,7 @@
   margin-top: 12px;
 }
 
-/* Stats */
+
 .statsSection {
   display: flex;
   gap: 20px;
@@ -85,15 +84,14 @@
   text-align: center;
 }
 
-/* AI Section */
 .aiSection {
   background: white;
   padding: 16px;
   border-radius: 8px;
 }
 
-/* Recommended */
-.recommendedSection {
+ Typography adjustments 
+ .recommendedSection {
   background: white;
   padding: 16px;
   border-radius: 8px;
@@ -120,9 +118,78 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+} 
+
+
+.beneficiaries {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 4px 0;
 }
 
-/* Bottom */
+.description {
+  font-size: 14px;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+
+.progressContainer {
+  margin: 15px 0;
+}
+
+.progressStats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb; 
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #1f6b2c 0%, #a7f3d0 100%);
+  border-radius: 4px;
+}
+
+
+.contributors h5 {
+  margin: 12px 0 4px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.contributors p {
+  font-size: 13px;
+  color: #4b5563;
+  margin: 2px 0;
+}
+
+.fundButton {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background: #28a745; 
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fundButton:hover {
+  background: #218838;
+}
+
 .bottomSection {
   display: flex;
   gap: 20px;
@@ -131,9 +198,10 @@
 .recentImpact,
 .monthImpact {
   flex: 1;
-  background: white;
+  background:var(--Green);
   padding: 16px;
   border-radius: 8px;
+  /* color: var(--White); */
 }
 
 .impactCard {
@@ -141,6 +209,10 @@
   padding: 10px;
   margin-top: 8px;
   border-radius: 6px;
+}
+
+.monthImpact{
+  color: var(--White);
 }
 
 

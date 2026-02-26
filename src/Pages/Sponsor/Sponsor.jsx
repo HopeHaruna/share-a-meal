@@ -82,27 +82,68 @@ export default function Sponsor(){
 
       {/* Recommended Campaigns */}
       <div className={styles.recommendedSection}>
-        <h3>Recommended Campaigns</h3>
+  <h3>Recommended Campaigns</h3>
 
-        <div className={styles.campaignGrid}>
-          <div className={styles.campaignCard}>
-            <h4>Emergency Food Relief - Yaba</h4>
-            <p>Support urgent distribution to 200 families affected by flooding</p>
-            <button>Fund With Tokens</button>
-          </div>
-
-          <div className={styles.campaignCard}>
-            <h4>School Lunch Program - Surulere</h4>
-            <p>Fund daily lunch for 150 students at Community Primary School</p>
-            <button>Fund With Tokens</button>
-          </div>
+  <div className={styles.campaignGrid}>
+    {/* Card 1 */}
+    <div className={styles.campaignCard}>
+      <h4>Emergency Food Relief - Yaba</h4>
+      <p className={styles.beneficiaries}>Beneficiaries: Displaced Families</p>
+      <p className={styles.description}>Support urgent distribution to 200 families affected by flooding</p>
+      
+      {/* Progress Bar Section */}
+      <div className={styles.progressContainer}>
+        <div className={styles.progressStats}>
+          <span>85/200 meals</span>
+          <span>43%</span>
+        </div>
+        <div className={styles.progressBar}>
+          <div className={styles.progressFill} style={{ width: '43%' }}></div>
         </div>
       </div>
 
-      {/* Bottom Section */}
+      {/* Contributors Section */}
+      <div className={styles.contributors}>
+        <h5>Top Contributors</h5>
+        <p>Green Energy Limited - 25 Meals</p>
+        <p>Individual - 20 Meals</p>
+      </div>
+
+      <button className={styles.fundButton}>Fund With Tokens</button>
+    </div>
+
+    {/* Card 2 */}
+    <div className={styles.campaignCard}>
+      <h4>School Lunch Program - Surulere</h4>
+      <p className={styles.beneficiaries}>Beneficiaries: School Children</p>
+      <p className={styles.description}>Fund daily lunch for 150 students at Community Primary School</p>
+      
+      {/* Progress Bar Section */}
+      <div className={styles.progressContainer}>
+        <div className={styles.progressStats}>
+          <span>40/150 meals</span>
+          <span>43%</span>
+        </div>
+        <div className={styles.progressBar}>
+          <div className={styles.progressFill} style={{ width: '43%' }}></div>
+        </div>
+      </div>
+
+     
+      <div className={styles.contributors}>
+        <h5>Top Contributors</h5>
+        <p>Top Contributors</p> 
+      </div>
+
+      <button className={styles.fundButton}>Fund With Tokens</button>
+    </div>
+  </div>
+</div>
+     
+
+     
       <div className={styles.bottomSection}>
         
-        {/* Recent Impact */}
         <div className={styles.recentImpact}>
           <h3>Recent Impact</h3>
           <div className={styles.impactCard}>
@@ -115,7 +156,7 @@ export default function Sponsor(){
           </div>
         </div>
 
-        {/* Monthly Impact */}
+
         <div className={styles.monthImpact}>
           <h3>Your Impact This Month</h3>
           <p><strong>Meals Sponsored:</strong> 38</p>
