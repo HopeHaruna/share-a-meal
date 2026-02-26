@@ -8,7 +8,7 @@ import Login from "./Pages/Login/Login";
 
 
 import "./Theme/Global.css";
-// import SmeDash from "./Components/SmeDash/SmeDash";
+import SmeDash from "./Components/SmeDash/SmeDash";
 import DashLayout from "./Components/DashLayout/DashLayout";
 
 function App() {
@@ -21,10 +21,10 @@ function App() {
 				<Route index element={<HomePage />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/login" element={<Login />} />
-				{/* <Route path="/sme" element={<SmeDash />} /> */}
 				<Route path="/ngo" element={<NgoDash />} />
 			</Route>
 			<Route path="/dashboard" element={<DashLayout user={user} />} />
+			<Route path="/sme" element={<SmeDash />} />
 		</Routes>
 	);
 
