@@ -1,63 +1,52 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from "react-router-dom";
+import styles from './SideBar.module.css';
 import { 
-  FaThLarge, FaSearch, FaRegFileAlt, 
-  FaTruck, FaComments, FaCog, 
-  FaSignOutAlt, FaTimes 
-} from "react-icons/fa";
-import styles from "./SideBar.module.css";
+  MdDashboard, MdSearch, MdCalendarToday, MdLocalShipping, 
+  MdChatBubbleOutline, MdSettings, MdLogout, MdKeyboardArrowLeft 
+} from 'react-icons/md';
 
-const Sidebar = ({ isMobileOpen, closeSidebar }) => {
-  const navigate = useNavigate();
+export default function Sidebar(){
+    const navigate = useNavigate();
 
-  const menuItems = [
-    { name: "Dashboard", path: "/ngo", icon: <FaThLarge /> },
-    { name: "Browse Food", path: "/browse", icon: <FaSearch /> },
-    { name: "Reserve", path: "/reserve", icon: <FaRegFileAlt /> },
-    { name: "Pickup", path: "/pickup", icon: <FaTruck /> },
-    { name: "Messages", path: "/messages", icon: <FaComments />, badge: 3 },
-    { name: "Settings", path: "/settings", icon: <FaCog /> },
-  ];
+  const handleLogout = () => {
+    // Optional: clear tokens or user data
+    localStorage.removeItem("token"); 
+    localStorage.removeItem("user");
+
+    // Redirect to login page
+    navigate("/login");
+  };
+
 
   return (
-    <>
-      {/* 1. Backdrop Overlay: Only visible on mobile when sidebar is open */}
-      {isMobileOpen && <div className={styles.overlay} onClick={closeSidebar}></div>}
-
-      {/* 2. Sidebar Container */}
-      <aside className={`${styles.sidebar} ${isMobileOpen ? styles.mobileOpen : ""}`}>
-        <div className={styles.logoArea}>
-          <div className={styles.logoIcon}>🍽️</div>
-          <span className={styles.logoText}>Share A Meal</span>
-          
-          {/* Mobile Only: Close Button */}
-          <button className={styles.closeBtn} onClick={closeSidebar}>
-            <FaTimes />
-          </button>
+    <aside className={styles.sidebar}>
+      <div className={styles.logo}>
+        <span className={styles.logoIcon}>🍽️</span>
+        <span className={styles.logoText}>Share A Meal</span>
+      </div>
+      
+      <nav className={styles.nav}>
+        <div className={`${styles.navItem} ${styles.active}`}>
+          <MdDashboard /> Dashboard
         </div>
-
-        <nav className={styles.nav}>
-          {menuItems.map((item) => (
-            <NavLink 
-              key={item.name} 
-              to={item.path} 
-              className={({ isActive }) => isActive ? styles.active : styles.link}
-              onClick={closeSidebar} // Close sidebar when a link is clicked on mobile
-            >
-              {item.icon}
-              <span className={styles.linkText}>{item.name}</span>
-              {item.badge && <span className={styles.badge}>{item.badge}</span>}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className={styles.footer}>
-          <button className={styles.logoutBtn} onClick={() => navigate("/")}>
-            <FaSignOutAlt /> <span>Logout</span>
-          </button>
+        <div className={styles.navItem}><MdSearch /> Browse Food</div>
+        <div className={styles.navItem}><MdCalendarToday /> Reserve</div>
+        <div className={styles.navItem}><MdLocalShipping /> Pickup</div>
+        <div className={styles.navItem}>
+          <MdChatBubbleOutline /> Messages
+          <span className={styles.badge}>3</span>
         </div>
-      </aside>
-    </>
+        <div className={styles.navItem}><MdSettings /> Settings</div>
+      </nav>
+
+      <div className={styles.sidebarFooter}>
+        <div className={styles.navItem} 
+        onClick={handleLogout}
+        style={{ cursor: "pointer" }}><MdLogout /> Logout</div>
+        <div className={styles.navItem}><MdKeyboardArrowLeft /> Collapse</div>
+      </div>
+    </aside>
   );
 };
 
-export default Sidebar;

@@ -35,6 +35,8 @@
   color: var(--Green) !important; 
 }
 
+
+
 .navBtn {
   background-color: var(--Green);
   color: var(--White) !important;
@@ -53,6 +55,13 @@
 
 .mobileMenu {
   display: none;
+}
+
+.navDivider {
+  border: none;
+  height: 2px;
+  background-color: var(--Green); 
+  margin: 0;
 }
 
 @media (max-width: 768px) {

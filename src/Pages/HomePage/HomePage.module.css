@@ -26,6 +26,8 @@
   display: none;
 }
 
+
+
 .heroImage {
   position: relative;
 }
@@ -122,7 +124,6 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  /* border: 2px solid red; */
 }
 
 .values {
@@ -178,6 +179,18 @@
   border-bottom: 2px solid white;
 }
 
+.mealIcon{
+  width: 40px;
+  height: 40px;
+}
+
+.CardIcons{
+  width: 40px;
+  height: 40px;
+}
+
+
+
 @media (min-width: 768px) {
   .hero {
     flex-direction: row;
@@ -212,11 +225,11 @@
   }
 
   .Green__ball {
-    width: 10rem;
-    height: 10rem;
+    width: 11rem;
+    height: 11rem;
     border-radius: 100%;
     position: absolute;
-    top: 386px;
+    top: 382px;
     right: 6px;
     background-color: var(--Green);
   }
@@ -225,6 +238,7 @@
     display: flex;
     align-items: center;
     gap: 1.2rem;
+    margin-left: 35px;
   }
 
   .heroCTA p {

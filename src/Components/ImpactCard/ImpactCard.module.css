@@ -36,6 +36,7 @@
   height:95px;
   border-radius: 100%;
   background-color: var(--Green);
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,4 +49,5 @@
   padding: 0 10px;
   color: var(--Black);
 }
+
 

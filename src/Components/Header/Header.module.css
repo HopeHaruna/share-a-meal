@@ -1,118 +1,98 @@
 .header {
+  width: 100%;
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
+  /* Pushes everything to the far right like pic 2 */
+  justify-content: flex-end; 
   align-items: center;
-  padding: 24px 30px;
-  background: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 
-/* LEFT SIDE */
-.left {
-  display: flex;
-  flex-direction: column;
-}
-
-.greeting {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.subtext {
-  margin-top: 4px;
-  font-size: 14px;
-  color: #6b7280;
-}
-
-/* RIGHT SIDE */
-.right {
+.headerRight {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.notification {
-  font-size: 18px;
+/* Notification Styling */
+.notificationWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.headerIcon {
+  font-size: 24px;
+  color: #6b7280;
   cursor: pointer;
 }
 
-.profile {
+.dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #f59e0b; /* Orange dot from pic 2 */
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Vertical line between icon and profile */
+.divider {
+  width: 1px;
+  height: 30px;
+  background-color: #e5e7eb;
+  margin: 0 10px;
+}
+
+/* User Profile Layout */
+.userProfile {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
-  background: #1B5E20;
-  color: white;
+  width: 45px;
+  height: 45px;
+  background:var(--Green); 
+  color: var(--White);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-weight: 600;
-}
-
-.profileName {
-  margin: 0;
+  font-weight: 700;
   font-size: 14px;
-  font-weight: 600;
 }
 
-.accountType {
+.userInfo {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+}
+
+.userName {
+  font-weight: 700;
+  font-size: 14px;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.userRole {
   font-size: 12px;
-  color: #6b7280;
+  color: #9ca3af;
+  line-height: 1.2;
 }
 
 
-/* =========================
-   TABLET
-========================= */
 @media (max-width: 768px) {
   .header {
-    padding: 20px;
+    padding: 10px 15px;
   }
-
-  .greeting {
-    font-size: 18px;
-  }
-
-  .subtext {
+  
+  .userName {
     font-size: 13px;
-  }
-
-  .right {
-    gap: 14px;
-  }
-
-  .profileName {
-    font-size: 13px;
-  }
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 480px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .right {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .profile {
-    gap: 8px;
-  }
-
-  .avatar {
-    width: 36px;
-    height: 36px;
   }
 }
