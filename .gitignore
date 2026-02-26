@@ -76,4 +76,4 @@ food_status_model.pkl
 backend/ml/*.pkl
 
 
-*docs
+*/docs
