@@ -225,11 +225,11 @@
   }
 
   .Green__ball {
-    width: 10rem;
-    height: 10rem;
+    width: 11rem;
+    height: 11rem;
     border-radius: 100%;
     position: absolute;
-    top: 386px;
+    top: 382px;
     right: 6px;
     background-color: var(--Green);
   }

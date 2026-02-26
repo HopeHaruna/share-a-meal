@@ -32,9 +32,9 @@ export default function Home() {
 
         <div className={styles.heroImage}>
           <img src={heroImg} className={styles.image} alt="Food Bowl" />
-          <div className={styles.orange__ball}></div>
-          <div className={styles.leftOrange__ball}></div>
-          <div className={styles.rightOrange__ball}></div>
+          <div className={styles.Green__ball}></div>
+          <div className={styles.leftGreen__ball}></div>
+          <div className={styles.rightGreen__ball}></div>
         </div>
       </section>
 

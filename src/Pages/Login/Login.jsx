@@ -44,7 +44,6 @@ function Login() {
 		setLoading(true);
 		setServerMessage("");
 		try {
-			// Use centralized API helper
 			const result = await import("../../api").then((m) =>
 				m.apiRequest("/auth/login", {
 					method: "POST",
