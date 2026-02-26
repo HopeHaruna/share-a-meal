@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
 
@@ -8,12 +8,10 @@ const { AppError } = require("../middleware/errorHandler");
 
 const register = async (req, res, next) => {
 	try {
-
 		const { name, email, password, role, organization_name, address, phone } =
 			req.body;
 
 		if (!name || !email || !password || !role) {
-			
 			throw new AppError("Missing required fields", 400, "VALIDATION_ERROR", {
 				fields: ["name", "email", "password", "role"],
 			});
@@ -38,7 +36,7 @@ const register = async (req, res, next) => {
 		res.status(201).json({
 			message: "User registered successfully",
 			userId: result.insertId,
-			note: "Account requires admin verification before use", 
+			note: "Account requires admin verification before use",
 		});
 	} catch (error) {
 		next(error);
@@ -47,7 +45,6 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
 	try {
-		
 		const { email, password } = req.body;
 
 		if (!email || !password) {
@@ -64,7 +61,6 @@ const login = async (req, res, next) => {
 		]);
 
 		if (users.length === 0) {
-
 			throw new AppError("Invalid credentials", 401, "AUTH_FAILED");
 		}
 
@@ -81,21 +77,19 @@ const login = async (req, res, next) => {
 		const isMatch = await bcrypt.compare(password, user.password);
 
 		if (!isMatch) {
-			
 			throw new AppError("Invalid credentials", 401, "AUTH_FAILED");
 		}
 
 		const token = jwt.sign(
-			{ id: user.id, email: user.email, role: user.role }, 
-			process.env.JWT_SECRET, 
-			{ expiresIn: process.env.JWT_EXPIRES_IN }, 
+			{ id: user.id, email: user.email, role: user.role },
+			process.env.JWT_SECRET,
+			{ expiresIn: process.env.JWT_EXPIRES_IN },
 		);
 
 		res.json({
 			message: "Login successful",
-			token, 
+			token,
 			user: {
-				
 				id: user.id,
 				name: user.name,
 				email: user.email,

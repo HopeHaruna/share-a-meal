@@ -3,8 +3,9 @@ const cors = require("cors");
 const allowedOrigins = [
 	"http://localhost:3000",
 	"http://localhost:5173",
-	"https://your-production-frontend.com",
-];
+	process.env.FRONTEND_URL,
+	,
+].filter(Boolean);
 
 module.exports = () =>
 	cors({
@@ -17,4 +18,6 @@ module.exports = () =>
 			}
 		},
 		credentials: true,
+		methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+		allowedHeaders: "Content-Type, Authorization",
 	});
