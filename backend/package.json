@@ -28,7 +28,7 @@
 	"license": "MIT",
 	"description": "",
 	"dependencies": {
-		"bcryptjs": "^3.0.3",
+		"bcrypt": "^3.0.3",
 		"client": "^0.0.1",
 		"cors": "^2.8.6",
 		"dotenv": "^17.3.1",
