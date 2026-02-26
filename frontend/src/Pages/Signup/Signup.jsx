@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { apiRequest } from "../api";
 import styles from "./Signup.module.css";
 import Openeye from "../../assets/Icons/eye-open.svg?react";
 import Closedeye from "../../assets/Icons/eye-closed.svg?react";
