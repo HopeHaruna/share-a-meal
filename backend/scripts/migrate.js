@@ -26,8 +26,6 @@ async function runMigration() {
 			config.ssl = {
 				rejectUnauthorized: true,
 			};
-			!!process.env.DB_CA_CERT);
-
 			if (process.env.DB_CA_CERT) {
 				config.ssl.ca = process.env.DB_CA_CERT;
 				console.log("🔐 Using CA certificate from environment variable");
@@ -81,11 +79,11 @@ async function runMigration() {
 				}
 			}
 		}
-const [tables] = await connection.query("SHOW TABLES");
-console.log(
-	"📋 Tables in current database:",
-	tables.map((row) => Object.values(row)[0]),
-);
+		const [tables] = await connection.query("SHOW TABLES");
+		console.log(
+			"📋 Tables in current database:",
+			tables.map((row) => Object.values(row)[0]),
+		);
 		console.log("✅ Database schema migration completed successfully!");
 		process.exit(0);
 	} catch (error) {
