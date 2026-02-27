@@ -3,7 +3,7 @@
 -- Description: Create all core tables for Share-a-Meal platform
 
 CREATE DATABASE IF NOT EXISTS sharemeal;
-USE sharemeal;
+
 
 -- Users table: Core authentication and profile data
 CREATE TABLE IF NOT EXISTS users (
