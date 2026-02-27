@@ -21,7 +21,7 @@ function Navbar() {
           </Link>
         </div>
         <ul className={styles.desktopLinks}>
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/" className={styles.activeLink}>Home</Link></li>
           <li><HashLink smooth to="/#how-it-works-ln" className={styles.activeLink}>How it Works</HashLink></li>
           <li><HashLink smooth to="/#impact" className={styles.activeLink}>Impact</HashLink></li>
           <li><HashLink smooth to="/#about-us" className={styles.activeLink}>AboutUs</HashLink></li>
