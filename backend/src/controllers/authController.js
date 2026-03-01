@@ -17,7 +17,9 @@ const register = async (req, res, next) => {
 			});
 		}
 
-		if (!["sme", "ngo", "sponsor"].includes(role)) {
+		const normalizedRole = role.toLowerCase();
+
+		if (!["sme", "ngo", "sponsor"].includes(normalizedRole)) {
 			throw new AppError(
 				"Invalid role. Allowed roles: sme, ngo, sponsor",
 				400,
@@ -30,9 +32,16 @@ const register = async (req, res, next) => {
 
 		const [result] = await pool.query(
 			"INSERT INTO users (name, email, password, role, organization_name, address, phone) VALUES (?, ?, ?, ?, ?, ?, ?)",
-			[name, email, hashedPassword, role, organization_name, address, phone],
+			[
+				name,
+				email,
+				hashedPassword,
+				normalizedRole,
+				organization_name,
+				address,
+				phone,
+			],
 		);
-
 		res.status(201).json({
 			message: "User registered successfully",
 			userId: result.insertId,

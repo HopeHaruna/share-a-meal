@@ -1,5 +1,7 @@
 const express = require("express");
-require("dotenv").config();
+require("dotenv").config({
+	path: process.env.NODE_ENV === "test" ? ".env.test" : ".env",
+});
 console.log("🔍 App DB_NAME:", process.env.DB_NAME);
 const helmet = require("helmet");
 const swaggerUi = require("swagger-ui-express");

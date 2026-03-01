@@ -11,7 +11,7 @@ class AppError extends Error {
 }
 
 const errorHandler = (err, req, res, next) => {
-	
+	 
 	err.statusCode = err.statusCode || 500;
 	err.status = err.status || "error";
 	err.code =
@@ -137,7 +137,7 @@ const errorConverter = (err, req, res, next) => {
 	let error = err;
 
 	if (!(error instanceof AppError)) {
-		
+		console.log("RAW ERROR DEBUG:", error);
 		if (error.code?.startsWith("ER_")) {
 			error = handleMySQLError(error);
 		}

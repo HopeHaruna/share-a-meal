@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS meal_logs (
 -- Sponsorships table: Sponsor contributions
 CREATE TABLE IF NOT EXISTS sponsorships (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  sponsor_id INT NOT NULL,
+  sponsor_id INT NOT NULL, 
   meal_id INT,
   ngo_id INT,
   amount DECIMAL(10,2),

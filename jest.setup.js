@@ -1,10 +1,20 @@
-// Set test environment variables
-process.env.NODE_ENV = "test";
-process.env.DB_NAME = "sharemeal_test"; // Separate test database
-process.env.JWT_SECRET = "test-secret-key-12345";
-process.env.JWT_EXPIRES_IN = "24h";
-process.env.ADMIN_SECRET = "test-admin-secret";
-process.env.SERVICE_TOKEN = "test-service-token";
+module.exports = {
+	testEnvironment: "node",
+	setupFilesAfterEnv: ["./tests/setup.js"],
+	testTimeout: 30000,
+	verbose: true,
+};
+// jest.setup.js
+require('dotenv').config({ path: '.env.test' });
+const { execSync } = require('child_process');
 
-// Increase timeout for database operations
-jest.setTimeout(10000);
+beforeAll(() => {
+  // Optional: run migrations on test DB before tests
+  execSync('npm run migrate:test', { stdio: 'inherit' });
+});
+
+afterAll(() => {
+  // Optional: clean up
+});
+
+jest.setTimeout(30000);
