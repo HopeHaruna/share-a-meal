@@ -77,3 +77,8 @@ backend/ml/*.pkl
 
 
 */docs
+
+# Docker files
+docker-compose.yml
+Dockerfile.local
+*.dockerignore
